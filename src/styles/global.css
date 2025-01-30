@@ -1,0 +1,11 @@
+@import '@fontsource/inter/index.css';
+
+:root {
+    --color-secondary-1: #FFD460;
+    --color-secondary-2: #F07B3F;
+    --color-text: #333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}

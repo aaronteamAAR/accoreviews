@@ -1,0 +1,23 @@
+---
+const links = [
+    {id: 1, text: 'Popular', link: '/'},
+    {id: 2, text: 'All', link: '/all'},
+    {id: 3, text: 'About us', link: '/about'},
+];
+
+---
+
+<div class="flex justify-between items-center px-10 border-b border-gray-300 py-2.5">
+    <!-- SIDE BAR -->
+    Menu icon
+    <!-- NAV LINKS -->
+    <ul class="flex gap-10">
+        {links.map((link) => (
+            <li class="font-thin uppercase text-gray-500 hover:text-[var(--color-secondary-2)]">
+              <a href={link.link}>{link.text}</a>
+            </li>
+          ))}
+    </ul>
+    <!-- SEARCH -->
+    search icon
+</div>
