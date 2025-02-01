@@ -1,6 +1,6 @@
 export const sportBlogs = [
     {
-        id: 1,
+        id: "1",
         title: "The Evolution of Football: Past, Present, and Future",
         author: "Jack Wilson",
         date: "2025-01-29",
@@ -10,9 +10,14 @@ export const sportBlogs = [
         category: "Sports",
         tags: ["Football", "History", "World Cup"],
         readingTime: "7 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
       },
       {
-        id: 2,
+        id: "2",
         title: "How Sports Science is Changing Athlete Performance",
         author: "Ava Scott",
         date: "2025-01-26",
@@ -22,9 +27,14 @@ export const sportBlogs = [
         category: "Sports",
         tags: ["Sports Science", "Training", "Athlete Performance"],
         readingTime: "8 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
       },
       {
-        id: 3,
+        id: "3",
         title: "The Best Sneakers for Performance and Style in 2025",
         author: "Benjamin Taylor",
         date: "2025-01-20",
@@ -34,5 +44,10 @@ export const sportBlogs = [
         category: "Sports",
         tags: ["Sneakers", "Athletic Wear", "Style"],
         readingTime: "6 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
     },
 ]

@@ -1,6 +1,6 @@
 export const artBlogs = [
     {
-      id: 1,
+      id: "1",
       title: "The Rise of Digital Art in 2025",
       author: "Sophia Turner",
       date: "2025-02-05",
@@ -10,9 +10,14 @@ export const artBlogs = [
       category: "Arts",
       tags: ["Digital Art", "NFTs", "Creativity"],
       readingTime: "6 min",
+      subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
     },
     {
-      id: 2,
+      id: "2",
       title: "How AI is Revolutionizing Art and Creativity",
       author: "Liam Johnson",
       date: "2025-01-28",
@@ -22,9 +27,14 @@ export const artBlogs = [
       category: "Arts",
       tags: ["AI Art", "Machine Learning", "Innovation"],
       readingTime: "7 min",
+      subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
     },
     {
-      id: 3,
+      id: "3",
       title: "10 Must-Visit Art Galleries Around the World",
       author: "Emma Williams",
       date: "2025-01-22",
@@ -34,5 +44,10 @@ export const artBlogs = [
       category: "Arts",
       tags: ["Art Galleries", "Travel", "Culture"],
       readingTime: "5 min",
+      subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
     },
 ];

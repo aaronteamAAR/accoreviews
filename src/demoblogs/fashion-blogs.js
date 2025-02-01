@@ -1,6 +1,6 @@
 export const fashionBlogs = [
     {
-        id: 1,
+        id: "1",
         title: "Sustainable Fashion: The Future of Clothing",
         author: "Olivia Green",
         date: "2025-02-01",
@@ -12,7 +12,7 @@ export const fashionBlogs = [
         readingTime: "6 min",
       },
       {
-        id: 2,
+        id: "2",
         title: "The Top 5 Fashion Trends for 2025",
         author: "Ethan Carter",
         date: "2025-01-30",
@@ -22,9 +22,14 @@ export const fashionBlogs = [
         category: "Fashion",
         tags: ["Trends", "Style", "Fashion Week"],
         readingTime: "7 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
       },
       {
-        id: 3,
+        id: "3",
         title: "Streetwear vs High Fashion: Which One is Dominating?",
         author: "Mia Anderson",
         date: "2025-01-27",
@@ -34,9 +39,14 @@ export const fashionBlogs = [
         category: "Fashion",
         tags: ["Streetwear", "Luxury", "Design"],
         readingTime: "5 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
       },
       {
-        id: 4,
+        id: "4",
         title: "How to Build a Timeless Wardrobe",
         author: "Noah Bennett",
         date: "2025-01-24",
@@ -46,5 +56,10 @@ export const fashionBlogs = [
         category: "Fashion",
         tags: ["Minimalism", "Classic Style", "Wardrobe Essentials"],
         readingTime: "6 min",
+        subBlogs: [
+          {id: "1", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "hat"},
+          {id: "2", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "jewelry"},
+          {id: "3", img: "https://picsum.photos/id/244/200/300", title: "Lorem ipsum dolor amet ilror",rating: '4.5', type: "candy"},
+        ],
       },
 ]

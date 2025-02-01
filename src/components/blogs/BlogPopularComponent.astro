@@ -1,21 +1,29 @@
 ---
 import BlogCard from "./BlogCard.astro"
-const { category, dataType, column } = Astro.props
+const { category, dataType } = Astro.props
 
 ---
 
-<div class="px-[150px] pt-[70px]">
-    <h1 class="font-sans text-3xl font-thin text-[var(--color-text)]">Popular from 
+<div class="px-[150px] pt-[70px] s:px-[30px] sm:px-[40px] md:px-[60px]">
+    <h1 class="font-sans text-3xl font-thin text-[var(--color-text)] s:text-center sm:text-center">Popular from 
         <span class="italic bg-[var(--color-secondary-1)] px-2">{category}</span>
     </h1>
-    <div class={`grid grid-cols-${column} gap-4 my-6`}>
-		{dataType.slice(0, 3).map((blog: { image: string, author: string, readingTime: string, title: string, category: string }) => (
+    <div class={`grid s:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 grid-cols-3 gap-4 my-6`}>
+		{dataType.slice(0, 3).map((blog: { 
+			image: string, 
+			author: string, 
+			readingTime: string, 
+			title: string, 
+			category: string, 
+			id: string 
+		}) => (
 			<BlogCard 
 			image={blog.image} 
 			author={blog.author}
 			readingTime={blog.readingTime}
 			title={blog.title} 
 			category={blog.category}
+			id={blog.id}
 			/>
 		))}
 	</div>

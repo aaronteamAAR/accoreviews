@@ -4,9 +4,11 @@ import Navigation from "./Navigation.astro";
 ---
 
 <div>
-    <SocialIcons/>
-    <div class="flex justify-center items center h-40">
-        <h1 class="text-8xl leading-[20.57px] flex justify-center items-center font-thin text-[var(--color-text)] font-sans">Accoreviews</h1>
+    <div class="s:hidden sm:hidden">
+        <SocialIcons/>
+    </div>
+    <div class="flex justify-center items center h-40 s:h-10">
+        <h1 class="s:hidden text-8xl leading-[20.57px] flex justify-center items-center font-thin text-[var(--color-text)] font-sans">Accoreviews</h1>
     </div>
     <Navigation/>
 </div>

@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BlogCard from "../components/blogs/BlogCard.astro";
+import { allBlogs } from "../demoblogs/all-blogs";
+---
+
+<Layout pageTitle="Blogs - Accoreviews">
+    <h3 class="text-center text-xl font-thin mt-10">Blogs</h3>
+    <div class="grid s:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 grid-cols-3 gap-y-8 gap-x-4 my-6 px-[120px] s:px-[30px] sm:px-[40px] md:px-[60px]">
+        {allBlogs.map(blog => (
+            <BlogCard
+            image={blog.image} 
+			author={blog.author}
+			readingTime={blog.readingTime}
+			title={blog.title} 
+			category={blog.category}
+			id={blog.id}
+			/>
+        ))}
+    </div>
+</Layout>
