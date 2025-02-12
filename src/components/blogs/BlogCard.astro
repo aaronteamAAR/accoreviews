@@ -12,8 +12,8 @@ const {
 <div class="p-2.5">
     <div class="group relative">
         <div class="absolute top-6 left-6 py-1.5 px-2.5 bg-[var(--color-secondary-2)] text-xs text-white hidden group-hover:block transition-all duration-1000">{category}</div>
-        <a href={`/blog/${category}/${id}`}>
-            <img 
+        <a href={`/blog/${id}`}>
+            <img
             src={image} 
             alt={`Image from Blog post ${category} ${id}`}
             class="w-full h-[300px] object-cover hover:cursor-pointer"
@@ -21,7 +21,7 @@ const {
         </a>
     </div>
     <div class="flex flex-col justify-between h-[80px]">
-        <h4 class="font-thin text-lg my-3 text-gray-500 hover:text-[var(--color-secondary-2)] hover:cursor-pointer"><a href={`/blog/${category}/${id}`}>{title}</a></h4>
+        <h4 class="font-thin text-lg my-3 text-gray-500 hover:text-[var(--color-secondary-2)] hover:cursor-pointer"><a href={`/blog/${id}`}>{title}</a></h4>
         <div class="flex gap-1.5 items-center text-xs justify-end">
             <span>By {author}</span>
             <span class="h-1 w-1 rounded-full bg-[var(--color-secondary-2)]"></span>

@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Banner from '../../components/Banner.astro';
+import Heading from '../../components/Heading.astro';
+import Subtitle from '../../components/Subtitle.astro';
+import Tags from '../../components/Tags.astro';
+import { allBlogs } from '../../demoblogs/all-blogs';
+import ShareButton from '../../components/ShareButton.astro';
+
+export function getStaticPaths() {
+  return allBlogs.map(blog => ({
+    params: { id: blog.id },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
+---
+
+<Layout pageTitle={blog.title + ' Accoreviews'}>
+  <div class="px-[80px] py-[50px] s:p-[30px] sm:px-[50px]">
+
+    <!-- BACK BUTTON -->
+    <a href="/blog" class="w-fit mb-32 text-white">
+      <span class="h-11 w-11 rounded-full bg-[var(--color-secondary-2)] hover:bg-[var(--color-secondary-2-dark)] transition-colors duration-300 flex justify-center items-center">
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
+    </a>
+
+    <!-- HEADING AND SUBTITLE -->
+    <div class="flex flex-col justify-center items-start mt-10 mx-40 md:items-end sm:items-center s:items-center s:mx-10">
+      <div class="w-[600px] space-y-5 s:w-[400px] md:w-[500px]">
+        <h1 class="font-bold text-black text-3xl">{ blog.title }</h1>
+        <h3 class="font-semibold text-2=xl text-[var(--color-text)]">{blog.content.slice(0,249)}</h3>
+      </div>
+
+      <!-- TAGS AND SHARE -->
+      <div class="flex s:flex-col s:items-start justify-between items-center w-full sm:gap-10 md:gap-10">
+        <div class="flex s:flex-col s:items-start gap-3 items-center my-5">
+          {blog.tags.map(tag => <Tags tag={tag}/>)}
+        </div>
+        <ShareButton/>
+      </div>
+    </div>
+
+    <!-- MAIN IMAGE -->
+    <div class="mb-2.5 mt-4">
+      <img src={blog.image} alt={`Image for blog ${blog.id}`} class="h-[689px] w-full object-cover">
+    </div>
+
+
+    <div class="flex flex-col justify-center items-center space-y-5">
+      <div class="flex justify-between items-center space-x-10 mt-5">
+        <!-- AUTHOR -->
+        <div class="flex items-center gap-2 text-[var(--color-text)] text-xs border-b border-gray-500 pb-2.5">
+          <img src="https://res.cloudinary.com/dygn4o3nv/image/upload/v1739359061/matthew-hamilton-vz5afU8OCig-unsplash_emuzfx.jpg" alt={blog.author} class="h-6 w-6 rounded-full object-cover"/>
+          <span>Written by: <strong>{blog.author}</strong></span>
+        </div>
+
+        <!-- READING TIME / DATE -->
+        <div class="flex items-center justify-between gap-20 h-10 border-b border-gray-500 text-[var(--color-text)] text-xs">
+          <span>{blog.readingTime} read</span>
+          <!-- <span class="text-[var(--color-text)] text-xs">Written By: <strong>{blog.author}</strong></span> -->
+          <span>{blog.date}</span>
+        </div>
+      </div>
+      
+      <!-- BANNER -->
+      <Banner>
+        <p>Visit the store</p>
+        <span><i class="fa-solid fa-store"></i></span>
+      </Banner>
+      <div class="grid grid-cols-3 s:grid-cols-1 sm:grid-cols-1 gap-x-10 s:gap-y-10 sm:gap-y-10 m-10 w-full px-14 s:px-7 sm:px-5 s:mt-3 sm:mt-1.5">
+        {blog.subBlogs.map(subBlog => 
+          <div>
+            <img src={subBlog.img} alt="Image" class="h-[250px] w-full object-cover">
+            <div class="flex items-center justify-between my-2.5">
+              <p>{subBlog.title}</p>
+              <p class="text-xs">{subBlog.rating}</p>
+            </div>
+            <button class="underline ml-0.5 text-[var(--color-secondary-2)] hover:text-[var(--color-secondary-2-dark)]">Shop the {subBlog.type}</button>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</Layout>

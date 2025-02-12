@@ -5,6 +5,11 @@ import Footer from '../components/Footer.astro'
 import { ChakraProvider } from '@chakra-ui/react';
 
 const { pageTitle } = Astro.props
+
+
+const path = Astro.url.pathname
+
+console.log(path);
 ---
 
 <!doctype html>

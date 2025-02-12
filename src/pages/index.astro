@@ -1,10 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BlogCard from '../components/blogs/BlogCard.astro';
-import { techBlogs } from '../demoblogs/tech-blog.js';
-import { sportBlogs } from '../demoblogs/sport-blogs';
-import { fashionBlogs } from '../demoblogs/fashion-blogs';
-import { artBlogs } from '../demoblogs/art-blogs';
 import BlogPopularComponent from '../components/blogs/BlogPopularComponent.astro';
 
 // interface Post {
@@ -24,8 +19,8 @@ import BlogPopularComponent from '../components/blogs/BlogPopularComponent.astro
 ---
 
 <Layout pageTitle="Home - Accoreviews">
-	<BlogPopularComponent category="Tech" dataType={techBlogs} />
-	<BlogPopularComponent category="Sports" dataType={sportBlogs} />
-	<BlogPopularComponent category="Fashion" dataType={fashionBlogs} />
-	<BlogPopularComponent category="Arts" dataType={artBlogs} />
+	<BlogPopularComponent dataCategory="Tech"  />
+	<BlogPopularComponent dataCategory="Sports"  />
+	<BlogPopularComponent dataCategory="Fashion"  />
+	<BlogPopularComponent dataCategory="Arts"  />
 </Layout>
