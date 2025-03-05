@@ -1,12 +1,12 @@
-@import '@fontsource/inter/index.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
     --color-secondary-1: #FFD460;
     --color-secondary-2: #F07B3F;
     --color-secondary-2-dark: #ea6e30;
-    --color-text: #333;
+    --color-text: #4f4f4f;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", serif;
 }

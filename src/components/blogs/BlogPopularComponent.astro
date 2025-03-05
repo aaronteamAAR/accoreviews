@@ -1,27 +1,27 @@
 ---
-import BlogCard from "./BlogCard.astro"
-const { dataCategory } = Astro.props
-
-import { allBlogs } from "../../demoblogs/all-blogs"
+import BlogCard from "./BlogCard.astro";
+import { getBlogPosts } from "../../lib/sanityQueries";
+const { dataCategory } = Astro.props;
+const allPosts = await getBlogPosts();
+const popularPosts = allPosts
+  .filter(post => post.category === dataCategory)
+  .slice(0, 3);
 ---
 
 <div class="px-[150px] pt-[70px] s:px-[30px] sm:px-[40px] md:px-[60px]">
-    <h1 class="font-sans text-3xl font-thin text-[var(--color-text)] s:text-center sm:text-center">Popular from 
-        <span class="italic bg-[var(--color-secondary-1)] px-2">{dataCategory}</span>
+    <h1 class="font-sans text-3xl font-normal text-[var(--color-text)] s:text-center sm:text-center">Popular from 
+        <span class="italic font-thin bg-[var(--color-secondary-1)] px-2">{dataCategory}</span>
     </h1>
-    <div class={`grid s:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 grid-cols-3 gap-4 my-6`}>
-		{allBlogs
-		.filter(blog => blog.category === dataCategory)
-		.slice(0, 3)
-		.map((blog) => (
-		  <BlogCard
-			image={blog.image}
-			author={blog.author}
-			readingTime={blog.readingTime}
-			title={blog.title}
-			category={blog.category}
-			id={blog.id}
-		  />
-		))}
-	</div>
+    <div class="grid s:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 grid-cols-3 gap-4 my-6">
+        {popularPosts.map(post => (
+          <BlogCard
+            image={post.mainImage?.asset.url}
+            author={post.author}
+            readingTime={post.readingTime}
+            title={post.title}
+            category={post.category}
+            id={post.slug} 
+          />
+        ))}
+    </div>
 </div>

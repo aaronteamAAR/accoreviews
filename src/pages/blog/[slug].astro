@@ -1,0 +1,127 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getBlogPostBySlug } from "../../lib/sanityQueries";
+import { toHTML } from "@portabletext/to-html";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+const blog = await getBlogPostBySlug(slug);
+
+if (!blog) {
+  return new Response(null, { status: 404 });
+}
+
+const bodyHTML = toHTML(blog.body || []);
+---
+
+<Layout pageTitle={`${blog.title} - Accoreviews`}>
+  <div class="max-w-[1440px] font-sans mx-auto px-4 sm:px-6 lg:px-20 py-8 md:py-12">
+    <a href="/blog" class="inline-block mb-8">
+      <span
+        class="h-11 w-11 rounded-full bg-[var(--color-secondary-2)] hover:bg-[var(--color-secondary-2-dark)] transition-colors duration-300 flex justify-center items-center text-white"
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
+    </a>
+
+    <div class="flex flex-col items-center mt-6">
+      <div class="w-full max-w-4xl px-4">
+        <h1 
+          class="font-bold text-black text-[44px] sm:text-4xl lg:text-[44px] mb-4 break-words"
+        >
+          {blog.title}
+        </h1>
+        <h3
+          class="font-semibold text-2xl sm:text-2xl text-[var(--color-text)] mb-6"
+        >
+          {blog.subTitle || ""}
+        </h3>
+      </div>
+    </div>
+
+    <div class="mt-6 mb-8">
+      <img
+        src={blog.mainImage?.asset.url}
+        alt={`Image for blog ${blog.slug}`}
+        class="w-full max-h-[80vh] object-cover rounded-lg"
+      />
+    </div>
+
+    <div class="flex flex-col items-center space-y-6">
+      <div class="w-full max-w-5xl px-4">
+        <!-- READING TIME / DATE (uncomment if needed) -->
+        <!-- <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-20 border-b border-gray-500 pb-4 text-[var(--color-text)] text-sm">
+          <span>{blog.readingTime || 0} read</span>
+          <span>{new Date(blog.publishedAt || new Date()).toLocaleDateString()}</span>
+        </div> -->
+        
+        <div 
+          class="prose prose-lg max-w-none text-[19px] py-8 leading-relaxed text-gray-800"
+          set:html={bodyHTML}
+        />
+      </div>
+
+      <!-- FEATURED PRODUCTS -->
+      <div class="w-full max-w-5xl text-[19px] px-4 mt-8 space-y-8">
+        {
+          (blog.subBlogs || []).map((subBlog) => (
+            <div class="flex flex-col space-y-4 pb-6 border-b last:border-b-0">
+              <h2 class="text-xl font-bold text-[#131A22]">
+                {subBlog.title}
+              </h2>
+              <div class="w-full">
+                <img
+                  src={subBlog.img?.asset.url}
+                  alt={subBlog.title}
+                  class="w-full max-h-[500px] object-cover rounded-md"
+                />
+              </div>
+              <p class="text-gray-800">{subBlog.description}</p>
+              <p class="text-gray-800"><b>Price:</b> {subBlog.price}</p>
+              <p>
+                <a
+                href={subBlog.shopLink || "#"}
+                class="text-[#005276] underline w-full sm:w-auto text-start"
+              >
+                Shop Now
+              </a>
+              </p>
+            </div>
+          )) 
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Additional responsive styles */
+  @media (max-width: 640px) {
+    .prose {
+      font-size: 1rem;
+      line-height: 1.75rem;
+    }
+    
+    h1 {
+      font-size: 2rem !important;
+    }
+    
+    h3 {
+      font-size: 1.25rem !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .prose {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Ensure images don't overflow when zoomed */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
