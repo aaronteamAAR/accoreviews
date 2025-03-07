@@ -1,15 +1,9 @@
 {
     "version": 2,
-    "functions": {
-      "api/**/*.js": {
-        "memory": 1024,
-        "maxDuration": 30
-      }
-    },
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/.vercel/output/functions/_render.func"
+        "dest": "/.vercel_output/functions/_render.func"
       }
     ]
   }
