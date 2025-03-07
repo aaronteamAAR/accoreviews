@@ -3,7 +3,7 @@ import { c as createComponent, r as renderTemplate, m as maybeRenderHead, d as r
 import 'kleur/colors';
 import { $ as $$Layout } from '../chunks/Layout_qool2awm.mjs';
 import { $ as $$BlogCard } from '../chunks/BlogCard_DVJChC3g.mjs';
-import { a as getBlogPosts } from '../chunks/sanityQueries_5Bm9gRl-.mjs';
+import { a as getBlogPosts } from '../chunks/sanityQueries_CWS_XPLT.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();

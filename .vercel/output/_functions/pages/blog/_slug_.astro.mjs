@@ -2,7 +2,7 @@
 import { c as createComponent, r as renderTemplate, d as renderComponent, b as createAstro, m as maybeRenderHead, a as addAttribute, u as unescapeHTML } from '../../chunks/astro/server_CCOGXrug.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../../chunks/Layout_qool2awm.mjs';
-import { g as getBlogPostBySlug } from '../../chunks/sanityQueries_5Bm9gRl-.mjs';
+import { g as getBlogPostBySlug } from '../../chunks/sanityQueries_CWS_XPLT.mjs';
 import { toHTML } from '@portabletext/to-html';
 /* empty css                                     */
 export { renderers } from '../../renderers.mjs';
