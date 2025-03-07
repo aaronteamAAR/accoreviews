@@ -6,16 +6,25 @@ import { toHTML } from "@portabletext/to-html";
 export const prerender = false;
 
 const { slug } = Astro.params;
-const blog = await getBlogPostBySlug(slug);
+let blog = null;
+let bodyHTML = '';
 
-if (!blog) {
-  return new Response(null, { status: 404 });
+try {
+  blog = await getBlogPostBySlug(slug);
+  console.log('Blog data:', blog);
+
+  if (!blog) {
+    return new Response(null, { status: 404 });
+  }
+
+  bodyHTML = toHTML(blog.body || []);
+} catch (error) {
+  console.error('Error fetching blog post:', error.message, error.stack);
+  return new Response('Internal Server Error: Failed to fetch blog post', { status: 500 });
 }
-
-const bodyHTML = toHTML(blog.body || []);
 ---
 
-<Layout pageTitle={`${blog.title} - Accoreviews`}>
+<Layout pageTitle={`${blog?.title || 'Blog Post'} - Accoreviews`}>
   <div class="max-w-[1440px] font-sans mx-auto px-4 sm:px-6 lg:px-20 py-8 md:py-12">
     <a href="/blog" class="inline-block mb-8">
       <span
@@ -30,20 +39,20 @@ const bodyHTML = toHTML(blog.body || []);
         <h1 
           class="font-bold text-black text-[44px] sm:text-4xl lg:text-[44px] mb-4 break-words"
         >
-          {blog.title}
+          {blog?.title || 'Untitled'}
         </h1>
         <h3
           class="font-semibold text-2xl sm:text-2xl text-[var(--color-text)] mb-6"
         >
-          {blog.subTitle || ""}
+          {blog?.subTitle || ""}
         </h3>
       </div>
     </div>
 
     <div class="mt-6 mb-8">
       <img
-        src={blog.mainImage?.asset.url}
-        alt={`Image for blog ${blog.slug}`}
+        src={blog?.mainImage?.asset?.url || '/placeholder.jpg'}
+        alt={`Image for blog ${blog?.slug || 'unknown'}`}
         class="w-full max-h-[80vh] object-cover rounded-lg"
       />
     </div>
@@ -65,27 +74,27 @@ const bodyHTML = toHTML(blog.body || []);
       <!-- FEATURED PRODUCTS -->
       <div class="w-full max-w-5xl text-[19px] px-4 mt-8 space-y-8">
         {
-          (blog.subBlogs || []).map((subBlog) => (
+          (blog?.subBlogs || []).map((subBlog) => (
             <div class="flex flex-col space-y-4 pb-6 border-b last:border-b-0">
               <h2 class="text-xl font-bold text-[#131A22]">
                 {subBlog.title}
               </h2>
               <div class="w-full">
                 <img
-                  src={subBlog.img?.asset.url}
+                  src={subBlog.img?.asset.url || '/placeholder.jpg'}
                   alt={subBlog.title}
                   class="w-full max-h-[500px] object-cover rounded-md"
                 />
               </div>
-              <p class="text-gray-800">{subBlog.description}</p>
-              <p class="text-gray-800"><b>Price:</b> {subBlog.price}</p>
+              <p class="text-gray-800">{subBlog.description || 'No description'}</p>
+              <p class="text-gray-800"><b>Price:</b> {subBlog.price || 'N/A'}</p>
               <p>
                 <a
-                href={subBlog.shopLink || "#"}
-                class="text-[#005276] underline w-full sm:w-auto text-start"
-              >
-                Shop Now
-              </a>
+                  href={subBlog.shopLink || "#"}
+                  class="text-[#005276] underline w-full sm:w-auto text-start"
+                >
+                  Shop Now
+                </a>
               </p>
             </div>
           )) 
