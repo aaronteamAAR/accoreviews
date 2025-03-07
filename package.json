@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.0",
+    "@astrojs/react": "^4.2.1",
     "@astrojs/tailwind": "^5.1.5",
     "@astrojs/vercel": "^8.1.1",
     "@chakra-ui/react": "^2.10.5",
