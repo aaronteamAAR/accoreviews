@@ -1,7 +1,7 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, m as maybeRenderHead, d as renderComponent } from '../chunks/astro/server_CCOGXrug.mjs';
 import 'kleur/colors';
-import { a as $$SocialIcons, $ as $$Layout } from '../chunks/Layout_qool2awm.mjs';
+import { a as $$SocialIcons, $ as $$Layout } from '../chunks/Layout_CxQbwnXQ.mjs';
 import 'clsx';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
