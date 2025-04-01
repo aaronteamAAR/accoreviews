@@ -1,0 +1,112 @@
+---
+const primeBenefits = {
+  title: "How to join Prime",
+  description: "If you want to take advantage of the many benefits that come with a Prime membership during the holiday season (and beyond!), now’s a great time to join. Prime’s core benefits of unlimited fast, free delivery on a vast selection of items and its extensive entertainment collection are better than ever, and we continue to invest and innovate so the membership remains an incredible value.",
+  pricingParagraph: "In the U.S., anyone can join Prime for $14.99 per month, or $139 per year if you pay annually. Amazon also offers additional, discounted membership options providing the exact same, valuable benefits of a regular Prime membership—including free delivery on more than 300 million items, exclusive deals, and savings for eligible members—at only 50% of the cost.",
+  discountedOptions: [
+    {
+      description: "Young adults (ages 18-24) and higher education students can try a discounted Prime membership with a six-month trial, then pay a discounted rate of $7.49 per month, or $69 per year.",
+      linkedText: "Prime membership with a six-month trial",
+    },
+    {
+      description: "Qualifying government assistance recipients can try Prime Access for 30-days before paying $6.99 per month.",
+      underlinedText: "Prime Access",
+      linkedText: "Prime Access for 30-days",
+    },
+  ],
+  moreInfoText: "For more information about Prime, including discounted memberships, visit aboutamazon.com/prime.",
+  moreInfoLink: "https://aboutamazon.com/prime",
+};
+
+const primeLink = "https://amzn.to/3YeJMH9";
+---
+
+<section class="font-sans px-[150px] py-[70px] s:px-[30px] sm:px-[40px] md:px-[60px]">
+  <div class="max-w-3xl mx-auto">
+    <!-- Title -->
+    <h1 class="font-sans text-3xl font-bold text-[#131A22] mb-6">
+      {primeBenefits.title}
+    </h1>
+
+    <!-- Description with "Prime membership" linked -->
+    <p class="text-base text-gray-800 leading-relaxed mb-4">
+      {primeBenefits.description.split("Prime membership")[0]}
+      <a
+        href={primeLink}
+        class="underline text-[#005276] hover:text-[#005276] transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Prime membership
+      </a>
+      {primeBenefits.description.split("Prime membership")[1]}
+    </p>
+
+    <!-- Pricing Paragraph -->
+    <p class="text-base text-gray-800 leading-relaxed mb-4">
+      {primeBenefits.pricingParagraph}
+    </p>
+
+    <!-- Discounted Options -->
+    <div class="space-y-4 mb-4">
+      {primeBenefits.discountedOptions.map(option => (
+        <p class="text-base text-gray-800 leading-relaxed">
+          {option.linkedText ? (
+            <>
+              {option.description.split(option.linkedText)[0]}
+              <a
+                href={primeLink}
+                class="underline text-[#005276] hover:text-[#005276] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {option.linkedText}
+              </a>
+              {option.description.split(option.linkedText)[1]}
+            </>
+          ) : option.underlinedText ? (
+            <>
+              {option.description.split(option.underlinedText)[0]}
+              <a
+                href={primeLink}
+                class="underline  text-[#005276] hover:text-[#005276] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {option.underlinedText}
+              </a>
+              {option.description.split(option.underlinedText)[1]}
+            </>
+          ) : (
+            option.description
+          )}
+        </p>
+      ))}
+    </div>
+
+    <!-- More Info Link -->
+    <p class="text-base text-gray-800 leading-relaxed">
+      {primeBenefits.moreInfoText.split('aboutamazon.com/prime')[0]}
+      <a
+        href={primeBenefits.moreInfoLink}
+        class="underline text-[#131A22] hover:text-[#005276] transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        aboutamazon.com/prime
+      </a>.
+    </p>
+  </div>
+</section>
+
+<style>
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    p {
+      font-size: 0.95rem;
+    }
+  }
+</style>

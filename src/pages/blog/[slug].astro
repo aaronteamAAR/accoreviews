@@ -1,4 +1,5 @@
 ---
+import PrimeMembership from "../../components/PrimeMembership.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getBlogPostBySlug } from "../../lib/sanityQueries";
 import { toHTML } from "@portabletext/to-html";
@@ -102,6 +103,7 @@ try {
       </div>
     </div>
   </div>
+  <PrimeMembership />
 </Layout>
 
 <style>
